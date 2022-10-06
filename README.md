@@ -9,3 +9,4 @@ This player isn't the most optimized and there's plenty of bugs. However, it can
 
 # Preview
 ![prev1](https://i.imgur.com/GeKOp8B.png)
+*When E is E - Orangepaprika 67, Minecraftfan Redstone & Danidanijr*
