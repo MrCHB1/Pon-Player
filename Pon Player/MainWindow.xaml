@@ -1,0 +1,56 @@
+﻿<Window x:Class="Pon_Player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pon_Player"
+        xmlns:d3d="clr-namespace:Pon_Player.Rendering"
+        xmlns:i="clr-namespace:System.Windows.Interop;assembly=PresentationCore"
+        mc:Ignorable="d"
+        Title="Pon Player" Height="720" Width="1280">
+    <Grid>
+        <StackPanel>
+            <Menu DockPanel.Dock="Top" x:Name="topMenu">
+                <MenuItem Header="_File" x:Name="fileMenu">
+                    <MenuItem Header="_Open MIDI" x:Name="MIDIFileBtn" Click="MIDIFileBtn_Click"/>
+                </MenuItem>
+            </Menu>
+            <DockPanel>
+                <DockPanel>
+                    <TextBlock Margin="7,0,0,7">Speed:</TextBlock>
+                    <TextBlock x:Name="playbackSpeedLabel" Margin="7,0,0,7">1</TextBlock>
+                    <Slider x:Name="playbackSpeedSlider" Focusable="False" Minimum="-4" Maximum="2" Value="0" Width="150" HorizontalAlignment="Left" ValueChanged="playbackSpeedSlider_ValueChanged"></Slider>
+                </DockPanel>
+            </DockPanel>
+        </StackPanel>
+        <Grid Margin="0,41,0,0">
+            <Grid Name="midiInfo" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="100" Margin="0,10,10,0">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity=".7" />
+                </Grid.Background>
+                <StackPanel>
+                    <Border>
+                        <StackPanel Name="midiPanel">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontFamily" Value="Consolas" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <DockPanel Name="timePanel">
+                                <TextBlock Margin="4,0,50,0" HorizontalAlignment="Left">Time</TextBlock>
+                                <TextBlock Name="timeLabel" HorizontalAlignment="Right" Margin="0,0,4,0">0:00</TextBlock>
+                            </DockPanel>
+                            <DockPanel Name="notesPanel">
+                                <TextBlock Name="ncLabel" HorizontalAlignment="Left" Margin="4,0,0,0">N/A</TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Margin="8,0,8,0">/</TextBlock>
+                                <TextBlock Name="tnLabel" HorizontalAlignment="Right" Margin="0,0,4,0">N/A</TextBlock>
+                            </DockPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <d3d:DXElement x:Name="MainRenderer" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</Window>
